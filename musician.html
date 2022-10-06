@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"   
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" 
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
  <head>
     <title>Musicians</title>
  </head>
@@ -7,14 +15,17 @@
 <h1>Musicians guess by Samyuktha</h1>
 
 <form>
-    <label for="secret_musician">Enter the secret musician name</label>
-    <input type="password" id="secret_musician" name="secret_musician" value="John Lennon" min=10 max=50 step=2 value=30 >
-    <br>
-    <label for="guess_musician">Guess the musician</label>
-    <input type="text" id="guess_musician" name="guess_musician" >
-    <br>
-    <input type="button" onclick="checkGuess()" value="Check the guess">
+    <div class="mb-3">
+    <label for="secret_musician" class="form-label">Enter the secret musician name</label>
+    <input type="password" class="form-control" id="secret_musician" name="secret_musician" value="John Lennon" min=10 max=50 step=2 value=30 >
+    </div>
+    <div class="mb-3">
+    <label for="guess_musician"  class="form-label">Guess the musician</label>
+    <input type="text" class="form-control" id="guess_musician" name="guess_musician" >
+    </div>
+    <input type="button"  onclick="checkGuess()" value="Check the guess">
    <div id ="display"></div>
+   <br>
    <div class="container">
     <img id="image" width="100" height="100" src="aphids.jpg"  alt="aphids" onclick="swapImage()">
    </div>
@@ -22,21 +33,33 @@
 <script>
     let correct=0;
     let wrong=0;
+    count=0;
     function checkGuess(){
     secret=document.getElementById("secret_musician").value;
     guess=document.getElementById("guess_musician").value;
     out=document.getElementById("display")
+    
     if(secret==guess){
+        count=0;
         alert("You got it right");
         correct=correct+1; 
         out.innerHTML = "correct: " + correct + " " + "wrong: " + wrong
     }
     else{
+        count+=1;
         alert("Wrong Musician");
         wrong=wrong+1;
         out.innerHTML = "correct: " + correct + " " + "wrong: " + wrong
     }
-
+    if(count>=3){
+     if(wrong>=3){
+        showAlert();
+    }
+    }
+    function showAlert(){
+        alert("Sorry, game over.");
+    }
+    
     }
     let useImage=1;
     function swapImage(){
