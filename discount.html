@@ -18,7 +18,7 @@
 </form>
 <br>
 <form>
-    <input type="radio" id="multiply" name="arithmetic" value="times" onclick="chooseOp()" checked >
+    <input type="radio" id="multiply" name="arithmetic" value="times" onclick="chooseOp()"  >
     <label for="multiply">*</label></br>
   
     <input type="radio" id="divide" name="arithmetic" onclick="chooseOp()" value="divide">
@@ -44,7 +44,7 @@ function discount(){
 }
 function chooseOp(){
     let baseValue=document.getElementById("base_amount").value;
-    let discountValue=document.getElementById("discount").value;
+    let discountValue=document.getElementById("discount_amount").value;
     out=document.getElementById("calculate");
     result = 0;
             display = "";
